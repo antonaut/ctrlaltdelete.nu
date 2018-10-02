@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CtrlAltDelete.nu</title>
+    <link>http://ctrlaltdelete.nu/</link>
+    <description>Recent content on CtrlAltDelete.nu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://ctrlaltdelete.nu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CtrlAltDelete.nu</title>
+      <link>http://ctrlaltdelete.nu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://ctrlaltdelete.nu/</guid>
+      <description>About This started out as a blog for written answers to assignments from a course in Computer Game Design&amp;nbsp;1 at the Royal Institute of Technology (KTH) in Sweden. Its purpose is to serve as a diary of sorts. It is a place where I jot down ideas, thoughts and reflections about my life and computers.
+It is solemnly written by me, Anton Erholt (twitter: @aerholt, github: @antonaut). I am 28 years old and live in Stockholm, Sweden.</description>
+    </item>
+    
+  </channel>
+</rss>

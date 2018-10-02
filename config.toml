@@ -1,0 +1,34 @@
+baseURL = "http://ctrlaltdelete.nu/"
+languageCode = "en-us"
+title = "CtrlAltDelete.nu"
+theme = "cocoa-eh"
+builddrafts = true
+canonifyurls = true
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+author = "Anton Erholt"
+disqusshortname = "ctrlaltdelete-nu"
+pluralizelisttitles = false
+
+[permalinks]
+blog = "blog/:slug/"
+
+[params]
+dateform = "Jan 2, 2006"
+dateformfull = "Mon Jan 2 2006 15:04:05 MST"
+description = "It's all about 42, (defn foobarbaz []) and cheeseburgers."
+copyright = "Copyright © 2018 Anton Erholt"
+logofile = "img/logo.png"
+faviconfile = "img/logo.png"
+highlightjs = true
+progressively = true
+align_left = false
+lang = "en"
+github = "antonaut"
+email = "aerholt@kth.se"
+linkedin = "anton-erholt-b5a29424"
+twitter = "aerholt"
+social_banner = "img/favicon.png"
+posts_navigation = true
+small_banner_logo = false
