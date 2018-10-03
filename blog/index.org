@@ -5,13 +5,16 @@
 #+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+LANGUAGE:  en
-#+HUGO_SECTION: ./
+#+HUGO_SECTION: blog
 #+HUGO_BASE_DIR: ../
 #+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_WEIGHT: auto
+
 
 * DONE About
 :PROPERTIES:
 :EXPORT_FILE_NAME: about
+:EXPORT_HUGO_SECTION: /
 :END:
 This started out as a blog for written answers to assignments from a
 course in Computer Game Design [fn:9] at the Royal Institute of
@@ -33,12 +36,10 @@ newer posts.
 # Note on themes: Hopefully the themes work out fine with the buttons.
 #
 Dear reader, hopefully it will be to your liking.
-
-
-* DONE Blog
-** DONE Portfolio                                                :portfolio:
+* DONE Portfolio                                                  :portfolio:
 :PROPERTIES:
 :EXPORT_FILE_NAME: portfolio
+:EXPORT_HUGO_SECTION: /
 :END:
 
 
@@ -46,7 +47,7 @@ These are some of the projects I have been involved in, one way or
 another. Most of the projects are related to school, but some have
 I worked on during my free time.
 
-*** Aerial
+** Aerial
 [[http://aerial.lindstrm.se/about][Aerial]] is a project where you control an airplane by moving a
 smartphone around. The goal of the project was to make something which
 somebody paralyzed from the neck and downwards could interact
@@ -61,7 +62,7 @@ This project was part of the KTH course AGI-15.
 #+CAPTION: Gameplay of Aerial.
 [[./img/aerial.png]]
 
-*** Padawan101
+** Padawan101
 [[http://www.nada.kth.se/~aerholt/padawan101/][Padawan101]] is a light saber simulator made for Oculus DK2, a Microsoft
 Kinect and a smart phone. The project was built with Unity. We
 combined a lot of technologies to get body and light saber tracking
@@ -74,7 +75,7 @@ The code is available [[https://github.com/stefanseibert/padawan101][here]]. Thi
 course AGI-15.
 
 
-*** Put put glorify!
+** Put put glorify!
 [[https://github.com/mold/bm-putputglorify][Bm-putputglorify]] is a multiplayer game to be played on a big screen
 using smart phones as controllers. You spawn as a shell, the objective
 is to crash into other shells. Me and some of my friends built it
@@ -84,7 +85,7 @@ as part of a 'pizza & javascript' - hackathon.
 [[https://raw.githubusercontent.com/mold/bm-putputglorify/master/put-put.png]]
 
 
-*** Rendering with ray casting and rasterization
+** Rendering with ray casting and rasterization
 
 I built two renderers using ray tracing and rasterization as part of a
 introduction course to computer graphics.
@@ -99,24 +100,8 @@ src="https://www.youtube.com/embed/8R8CTFd2PSc" frameborder="0"
 allowfullscreen></iframe>
 #+end_export
 
-#+begin_export html
-<!--
-#+end_export
+* DONE Blog                                                           :@blog:
 
-*** Commercial projects
-
-noaxlab
-
-*** Go projects -> posts?
-fractalz
-game-of-life
-
-*** Old projects
-
-
-#+begin_export html
--->
-#+end_export
 ** DONE Moves where a Queen can't take (8x8 chess board) :code:problem:clash:
 :PROPERTIES:
 :EXPORT_FILE_NAME: moves-where-a-queen-cant-take
@@ -280,7 +265,7 @@ Results in:
 25  24  23  22  21  20  19  18  17
 #+end_src
 
-** DONE Improving my Clojure skills, Apr 15             :code:problem:clash:
+** DONE Improving my Clojure skills                     :code:problem:clash:
 :PROPERTIES:
 :EXPORT_FILE_NAME: improving-my-clojure-skills
 :EXPORT_DATE: 2016-04-15
@@ -298,9 +283,10 @@ feel like I learn something new on (almost) every problem. Even though
 I can't finish most of them on time, I still try to complete them. I'll put
 some of my solutions to a few of the more interesting solutions here.
 
-** DONE End of my game dev story? Apr 09                      :gamedevstory:
+** DONE End of my game dev story?                             :gamedevstory:
 :PROPERTIES:
 :EXPORT_FILE_NAME: end-of-my-game-dev-story
+:EXPORT_DATE: 2016-04-09
 :END:
 
 We worked on this for a while, but it just ran out in the sand when I
@@ -312,9 +298,10 @@ WebGL.
 
 Hopefully we can publish the code with some small examples.
 
-** DONE Sphere packing on a sphere? Circle packing papers, Mar 08 :math:topology:
+** DONE Sphere packing on a sphere? Circle packing papers    :math:topology:
 :PROPERTIES:
 :EXPORT_FILE_NAME: sphere-packing-on-a-sphere
+:EXPORT_DATE: 2016-03-08
 :END:
 
 The idea of a tool giving you access to finding relevant papers in a
@@ -335,9 +322,10 @@ come naturally if the spheres grow to big. I sort of like the concept
 of several virtual globes for organizing stuff. Not so sure of how I
 would feel about them in reality though.
 
-** DONE Tools for completing a master's thesis, Feb 25  :thesis:tools:emacs:
+** DONE Tools for completing a master's thesis          :thesis:tools:emacs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: tools-for-writing-a-masters-thesis
+:EXPORT_DATE: 2016-02-25
 :END:
 
 A master's thesis is an intense 18 weeks of total focus and devotion
@@ -374,9 +362,10 @@ Just like this blog, I'll largely write my thesis in [[https://www.gnu.org/softw
 in [[https://www.mendeley.com/][Mendeley Desktop]] and in an org-mode file. I also found a nice
 latex-package for doing gantt-charts called /pgfgantt/.
 
-** DONE Concerning idea debt and investment, Feb 25    :documentation:ideas:
+** DONE Concerning idea debt and investment            :documentation:ideas:
 :PROPERTIES:
 :EXPORT_FILE_NAME: concerning-idea-debt-and-investment
+:EXPORT_DATE: 2016-02-25
 :END:
 
 I read [[http://jessicaabel.com/2016/01/27/idea-debt/][this]] article about idea debt. Not sure which affected me the
@@ -389,15 +378,17 @@ properly. This is my blog. My life.
 ** DONE 2016                                                       :newyear:
 :PROPERTIES:
 :EXPORT_FILE_NAME: new-year-2016
+:EXPORT_DATE: 2016-01-01
 :END:
 @@html:<h1>@@Happy new year 2016!@@html:</h1>@@
 
 2015 was not a very bloggy year. Who knows? Maybe 2016 will bear more
 blog fruit.
 
-** DONE Regarding problems which can be solved by dynamic programming techniques, Jan 22 :dynprog:recursion:bfs:
+** DONE Regarding problems which can be solved by dynamic programming techniques :dynprog:recursion:bfs:
 :PROPERTIES:
 :EXPORT_FILE_NAME: dynamic-programming-problems
+:EXPORT_DATE: 2015-01-22
 :END:
 
   I have recently watched quite a few videos on dynamic
@@ -544,11 +535,13 @@ _That's enough. I'll continue this some other time..._
 ** DONE 2015                                                       :newyear:
 :PROPERTIES:
 :EXPORT_FILE_NAME: new-year-2015
+:EXPORT_DATE: 2015-01-01
 :END:
 @@html:<h1>@@Happy new year 2015!@@html:</h1>@@
-** DONE A flawed idea of the halting problem, Mar 16 :programming:computer:science:
+** DONE A flawed idea of the halting problem :programming:computer:science:
 :PROPERTIES:
 :EXPORT_FILE_NAME: halting-problem
+:EXPORT_DATE: 2014-03-16
 :END:
 
 The halting problem is fairly interesting even though someone (Alan
@@ -662,6 +655,7 @@ are supposed to be declared before they're used./
 ** DONE HACKATHON!                                            :gamedevstory:
 :PROPERTIES:
 :EXPORT_FILE_NAME: hackathon
+:EXPORT_DATE: 2014-02-01
 :END:
 
 A lot has happened since we started developing the game.
@@ -684,6 +678,7 @@ listening to jazz from a jar (using something similar to
 ** DONE To use DDD or not (| !) to use DDD                    :gamedevstory:
 :PROPERTIES:
 :EXPORT_FILE_NAME: ddd-or-not-ddd
+:EXPORT_DATE: 2014-01-07
 :END:
 
 My initial thoughts on Data Driven Development was that it to some
@@ -706,9 +701,10 @@ As of right now we have a lot of coding to do in order to get our game
 playable (which of course is our current goal). Hopefully we'll be
 able to show off something soon.
 
-** DONE The beginning of Anton's Game Dev Story, Jan 7        :gamedevstory:
+** DONE The beginning of Anton's Game Dev Story        :gamedevstory:
 :PROPERTIES:
 :EXPORT_FILE_NAME: beginning-of-game-dev-story
+:EXPORT_DATE: 2014-01-07
 :END:
 About a year ago, me and two classmates ([[http://www.nada.kth.se/~johntu][johntu]] & [[http://www.nada.kth.se/~dmol][dmol]])
 participated in a programming competition called [[http://swdc.se/devnull/][Escape from
@@ -742,11 +738,13 @@ about...
 ** DONE 2014                                                       :newyear:
 :PROPERTIES:
 :EXPORT_FILE_NAME: new-year-2014
+:EXPORT_DATE: 2014-01-01
 :END:
 @@html:<h1>@@Happy new year 2014!@@html:</h1>@@
-** DONE Presentation of game demo, Dec 13                      :game:design:
+** DONE Presentation of game demo                      :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: presentation-game-demo
+:EXPORT_DATE: 2013-12-13
 :END:
 We made a presentation of a game demo we developed during the
 course [fn:9]. Here follows the script and some comments of the final
@@ -858,9 +856,10 @@ too few descriptions of the controls. However, that was something that
 we were already aware of, but due to time constraints we did not have
 enough time to implement as many “tutorial elements” in the prototype
 version of the game as we would have liked.
-** DONE Mobile games, Dec 6                                    :game:design:
+** DONE Mobile games                                    :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: mobile-games
+:EXPORT_DATE: 2013-12-06
 :END:
 # Tommy emphasized that, particularly for mobile games, you have 30
 # seconds to make the player interested. If not, they'll quit and play
@@ -896,9 +895,10 @@ would be good to perhaps infer an achievement system. Perhaps an
 achievement for the first death is a good idea so it actually turns
 into something positive?
 
-** DONE The game producer - Game business models, Dec 3        :game:design:
+** DONE The game producer - Game business models        :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: game-producer-business-models
+:EXPORT_DATE: 2013-12-03
 :END:
 # Present up to three (3) game-related business models and highlight the
 # pros and cons with each. Remember to exemplify and reference!
@@ -956,9 +956,10 @@ playerbase.  One example of where a switching between business models
 has been successful is Heroes of Newerth [fn:12]. The game is F2P
 since the 20th of July 2012 [fn:13] (is used to be P2P).
 
-** DONE Dataspelsbranschen: the trade organization, Nov 29     :game:design:
+** DONE Dataspelsbranschen: the trade organization     :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: dataspelsbranchen-trade-organisation
+:EXPORT_DATE: 2013-11-29
 :END:
 
 Today we had a guest lecture from Per Strömbäck of Dataspelsbranchen,
@@ -1003,9 +1004,10 @@ compared to when not having done them. I usually end up quitting these
 games immediately since they ultimately favor the player with the
 largest wallet. Which is insane.
 
-** DONE Short on game physics and animation, Nov 26            :game:design:
+** DONE Short on game physics and animation            :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: game-physics-and-animation
+:EXPORT_DATE: 2013-11-26
 :END:
 # Examine ways in which game physics techniques have led to interesting
 # forms of gameplay in a game of your choice (for example, ragdoll
@@ -1072,9 +1074,10 @@ gun downwards allowed for continuous hovering/floating. This made
 certain areas of the game a breeze to play through. Delightful,
 amusing and totally unexpected.
 
-** DONE Using a game engine or building your own? Nov 22       :game:design:
+** DONE Using a game engine or building your own?      :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: using-a-game-engine-or-building-your-own
+:EXPORT_DATE: 2013-11-22
 :END:
 
 This post will be filled with spontaneous questions and answers
@@ -1082,7 +1085,7 @@ related to whether one should use an existing game engine or create
 one from scratch.
 
 *What budget are you on?* If I'm really low on a budget I'll probably
-use an engine if it can save me some time, since we all know; Time is
+use an engine if it can save me some time we all know; Time is
 money. The time saving aspect is also present when it comes to
 maintaining the game and/or improving it. It is important that the
 engine gives you a good workflow so you can easily work with it. A
@@ -1113,9 +1116,10 @@ perfectly in the browser with great graphics. I remember specifically
 when Supergiant Games released Bastion [fn:22] on the Chrome Web
 Store. Beautiful.
 
-** DONE The Sims - a short presentation, Nov 20                :game:design:
+** DONE The Sims - a short presentation                :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: the-sims-presentation
+:EXPORT_DATE: 2013-11-20
 :END:
 
 We made a short presentation on the Sims in class. Here are the slides and the
@@ -1214,9 +1218,10 @@ them age. Another way of behaving in game, could of course be to do
 life as intended. Also are several different aspects of life which the
 player can focus on, for instance “University, Seasons, Pets… etc.”
 
-** DONE Future of procedural generation of content, Nov 19     :game:design:
+** DONE Future of procedural generation of content     :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: procedural-generation
+:EXPORT_DATE: 2013-11-19
 :END:
 I really think that map generation or procedural content generation is
 something which is becoming more and more common in games. Instead of
@@ -1253,9 +1258,10 @@ procedural creation might be very applicable to such scenarios. For
 instance generating content based on whatever you are currently
 looking at.
 
-** DONE Data-driven approach, Nov 15                           :game:design:
+** DONE Data-driven approach                           :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: data-driven-development
+:EXPORT_DATE: 2013-11-15
 :END:
 # Consider the data-driven approach to game engine architecture and
 # performance considerations in relation to both game engine development
@@ -1287,9 +1293,10 @@ a bit more suitable to the profiling tools. I feel that the most
 important thing is that the game gets created in the first place and
 then one can make gradual improvements.
 
-** DONE Software development model, Nov 12                     :game:design:
+** DONE Software development model                     :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: software-development-model
+:EXPORT_DATE: 2013-11-12
 :END:
 # Rikard (among other things) presented a few pointers what he thinks
 # are good approaches to game development. What do you think is a good
@@ -1323,9 +1330,10 @@ soon, and we're currently discussing this a lot. I'll definitely
 recall and reuse the idea about getting a head start and something
 playable as soon as possible.
 
-** DONE Haven and Hearth, Nov 8                                :game:design:
+** DONE Haven and Hearth                                :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: haven-and-hearth
+:EXPORT_DATE: 2013-11-08
 :END:
 Today I played a game by originally made by Seatribe called Haven and
 Hearth [fn:8]. It's a MMORPG where death, Permanent death(!), is
@@ -1361,9 +1369,10 @@ managed to find my friend there and we chopped down some trees
 together and built a simple shelter. Perhaps we should've played some
 more, since we didn't get that far in the game.
 
-** DONE What type of gamer are you? Nov 5                      :game:design:
+** DONE What type of gamer are you?                     :game:design:
 :PROPERTIES:
 :EXPORT_FILE_NAME: what-type-of-gamer-are-you
+:EXPORT_DATE: 2013-11-05
 :END:
 My name's Anton Erholt and I've just started my master's programme
 in Computer Science at KTH. I'm 23 years old and live in a suburb of

@@ -2,8 +2,9 @@
 title = "About"
 author = ["Anton Erholt"]
 description = "It's all about 42, (defn foobarbaz []) and cheeseburgers."
-lastmod = 2018-10-02T14:28:44+02:00
+lastmod = 2018-10-03T22:26:26+02:00
 draft = false
+weight = 1001
 +++
 
 This started out as a blog for written answers to assignments from a
