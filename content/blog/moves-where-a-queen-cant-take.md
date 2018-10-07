@@ -3,22 +3,23 @@ title = "Moves where a Queen can't take (8x8 chess board)"
 author = ["Anton Erholt"]
 description = "It's all about 42, (defn foobarbaz []) and cheeseburgers."
 date = 2016-04-17
-lastmod = 2018-10-03T22:26:26+02:00
+lastmod = 2018-10-07T11:23:49+02:00
 tags = ["code", "problem", "clash"]
 categories = ["blog"]
 draft = false
 weight = 2001
+best = true
 +++
 
+This piece finds okay positions where a single queen can't take the
+piece (on a 8x8 chess board). It took a little while to write, but I
+think it reads pretty well and is done in a functional style. I was
+TOO SLOW to finish this in a single clash! (1h 10min)
+
+Learned about generation with lazy-seq and map-indexed together with
+list comprehension (for).
+
 ```clojure
-;;; Finds okay positions where a single queen can't take the piece (8x8
-;;; board) It sure took a while to write, but now it's sort of understandable
-;;; and done in a functional style.
-;; TOO SLOW! (1h 10min)
-
-;; Learned about generation with lazy-seq and map-indexed together with
-;; list comprehension (for).
-
 
 ;; Simulates input.
 (def one-Q-board
@@ -95,7 +96,6 @@ weight = 2001
 
 
 ;; Functions for updating a board / 2d-seq
-
 (defn update-row [row x val]
   (map-indexed (fn [xidx col]
 		 (if (= x xidx) val col)) row))
@@ -134,7 +134,7 @@ Results in:
  ("P" "P" "P" "P" "." "." "." "P")
  ("." "." "." "." "." "Q" "." ".")
  ("P" "P" "P" "P" "." "." "." "P")
- ("P" "P" "P" "." "P" "." "P"pp ".")
+ ("P" "P" "P" "." "P" "." "P" ".")
  ("P" "P" "." "P" "P" "." "P" "P")
  ("P" "." "P" "P" "P" "." "P" "P")
  ("." "P" "P" "P" "P" "." "P" "P"))

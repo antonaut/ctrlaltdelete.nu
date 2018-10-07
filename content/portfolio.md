@@ -2,10 +2,10 @@
 title = "Portfolio"
 author = ["Anton Erholt"]
 description = "It's all about 42, (defn foobarbaz []) and cheeseburgers."
-lastmod = 2018-10-03T22:26:26+02:00
+lastmod = 2018-10-07T11:25:28+02:00
 tags = ["portfolio"]
 draft = false
-weight = 1002
+weight = 1003
 +++
 
 These are some of the projects I have been involved in, one way or
@@ -13,9 +13,12 @@ another. Most of the projects are related to school, but some have
 I worked on during my free time.
 
 
-## Aerial {#aerial}
+## School projects {#school-projects}
 
-[Aerial](http://aerial.lindstrm.se/about) is a project where you control an airplane by moving a
+
+### Aerial {#aerial}
+
+Aerial is a project where you control an airplane by moving a
 smartphone around. The goal of the project was to make something which
 somebody paralyzed from the neck and downwards could interact
 with. The smartphone is supposed to be attached to your head and you
@@ -26,10 +29,10 @@ well as some of the mathematical modeling needed.
 
 This project was part of the KTH course AGI-15.
 
-{{< figure src="./img/aerial.png" caption="Figure 1: Gameplay of Aerial." >}}
+{{< figure src="/img/aerial.png" caption="Figure 1: Gameplay of Aerial." >}}
 
 
-## Padawan101 {#padawan101}
+### Padawan101 {#padawan101}
 
 [Padawan101](http://www.nada.kth.se/~aerholt/padawan101/) is a light saber simulator made for Oculus DK2, a Microsoft
 Kinect and a smart phone. The project was built with Unity. We
@@ -43,7 +46,7 @@ The code is available [here](https://github.com/stefanseibert/padawan101). This 
 course AGI-15.
 
 
-## Put put glorify! {#put-put-glorify}
+### Put put glorify! {#put-put-glorify}
 
 [Bm-putputglorify](https://github.com/mold/bm-putputglorify) is a multiplayer game to be played on a big screen
 using smart phones as controllers. You spawn as a shell, the objective
@@ -53,7 +56,7 @@ as part of a 'pizza & javascript' - hackathon.
 {{< figure src="https://raw.githubusercontent.com/mold/bm-putputglorify/master/put-put.png" caption="Figure 2: Gameplay of bm-putputglorify" >}}
 
 
-## Rendering with ray casting and rasterization {#rendering-with-ray-casting-and-rasterization}
+### Rendering with ray casting and rasterization {#rendering-with-ray-casting-and-rasterization}
 
 I built two renderers using ray tracing and rasterization as part of a
 introduction course to computer graphics.

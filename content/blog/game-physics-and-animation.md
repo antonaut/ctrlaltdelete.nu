@@ -3,7 +3,7 @@ title = "Short on game physics and animation"
 author = ["Anton Erholt"]
 description = "It's all about 42, (defn foobarbaz []) and cheeseburgers."
 date = 2013-11-26
-lastmod = 2018-10-03T22:26:29+02:00
+lastmod = 2018-10-07T11:23:52+02:00
 tags = ["game", "design"]
 categories = ["blog"]
 draft = false
@@ -12,7 +12,7 @@ weight = 2020
 
 Some games are really nothing but great combination of physics,
 animation and astonishing scenery. One example I would like to discuss
-is a game called flower&nbsp;[^fn:1] (note, no capital f). In flower one
+is a game called flower (note, no capital f)&nbsp;[^fn:1]. In flower one
 controls a single petal flying in the wind over an enormous field. As
 you fly across the field, if you hit other flowers, some of its petals
 will join you in your flight. In order to complete a level you need to

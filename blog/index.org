@@ -10,220 +10,135 @@
 #+HUGO_AUTO_SET_LASTMOD: t
 #+HUGO_WEIGHT: auto
 
-
-* DONE About
+* DONE Home
 :PROPERTIES:
-:EXPORT_FILE_NAME: about
+:EXPORT_FILE_NAME: home
 :EXPORT_HUGO_SECTION: /
 :END:
-This started out as a blog for written answers to assignments from a
-course in Computer Game Design [fn:9] at the Royal Institute of
-Technology (KTH) in Sweden. Its purpose is to serve as a diary of
-sorts. It is a place where I jot down ideas, thoughts and reflections
-about my life and computers.
-
-It is solemnly written by me, Anton Erholt (twitter: [[http://twitter.com/aerholt][@aerholt]], github:
-[[https://github.com/antonaut/][@antonaut]]). I am 28 years old and live in Stockholm, Sweden. Currently I am
-working as a Data engineer at Tele2 IoT and finishing my master's
-thesis.
-
-This blog is in chronological order, with the oldest post at
-bottom. Yes if you want to read it, you have to scroll. This may seem
-a bit old-fashioned, but it is just the way I like it. I have started
-using proper links as well and omitted the footnote style for the
-newer posts.
-
-# Note on themes: Hopefully the themes work out fine with the buttons.
-#
-Dear reader, hopefully it will be to your liking.
-* DONE Portfolio                                                  :portfolio:
-:PROPERTIES:
-:EXPORT_FILE_NAME: portfolio
-:EXPORT_HUGO_SECTION: /
-:END:
-
-
-These are some of the projects I have been involved in, one way or
-another. Most of the projects are related to school, but some have
-I worked on during my free time.
-
-** Aerial
-[[http://aerial.lindstrm.se/about][Aerial]] is a project where you control an airplane by moving a
-smartphone around. The goal of the project was to make something which
-somebody paralyzed from the neck and downwards could interact
-with. The smartphone is supposed to be attached to your head and you
-control the plane by tilting your head back and forth or side to side.
-
-I worked mostly on project management and fixing the issues we had, as
-well as some of the mathematical modeling needed.
-
-This project was part of the KTH course AGI-15.
-
-#+CAPTION: Gameplay of Aerial.
-[[./img/aerial.png]]
-
-** Padawan101
-[[http://www.nada.kth.se/~aerholt/padawan101/][Padawan101]] is a light saber simulator made for Oculus DK2, a Microsoft
-Kinect and a smart phone. The project was built with Unity. We
-combined a lot of technologies to get body and light saber tracking
-working correctly. Worked on a lot of stuff during the project. What I
-worked the most on was actually networking, to create even more views
-so that people could join and look at the jedi fighting. I was also
-responsible for the project web page.
-
-The code is available [[https://github.com/stefanseibert/padawan101][here]]. This project was also part of the KTH
-course AGI-15.
-
-
-** Put put glorify!
-[[https://github.com/mold/bm-putputglorify][Bm-putputglorify]] is a multiplayer game to be played on a big screen
-using smart phones as controllers. You spawn as a shell, the objective
-is to crash into other shells. Me and some of my friends built it
-as part of a 'pizza & javascript' - hackathon.
-
-#+CAPTION: Gameplay of bm-putputglorify
-[[https://raw.githubusercontent.com/mold/bm-putputglorify/master/put-put.png]]
-
-
-** Rendering with ray casting and rasterization
-
-I built two renderers using ray tracing and rasterization as part of a
-introduction course to computer graphics.
-
-#+begin_export html
-<iframe width="420" height="315"
-src="https://www.youtube.com/embed/_Y4V6jAptpA" frameborder="0"
-allowfullscreen></iframe>
-
-<iframe width="420" height="315"
-src="https://www.youtube.com/embed/8R8CTFd2PSc" frameborder="0"
-allowfullscreen></iframe>
-#+end_export
-
 * DONE Blog                                                           :@blog:
 
 ** DONE Moves where a Queen can't take (8x8 chess board) :code:problem:clash:
 :PROPERTIES:
 :EXPORT_FILE_NAME: moves-where-a-queen-cant-take
 :EXPORT_DATE: 2016-04-17
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :best true
 :END:
+
+This piece finds okay positions where a single queen can't take the
+piece (on a 8x8 chess board). It took a little while to write, but I
+think it reads pretty well and is done in a functional style. I was
+TOO SLOW to finish this in a single clash! (1h 10min)
+
+Learned about generation with lazy-seq and map-indexed together with
+list comprehension (for).
 
 
 #+begin_src clojure :exports both
-;;; Finds okay positions where a single queen can't take the piece (8x8
-;;; board) It sure took a while to write, but now it's sort of understandable
-;;; and done in a functional style.
-;; TOO SLOW! (1h 10min)
 
-;; Learned about generation with lazy-seq and map-indexed together with
-;; list comprehension (for).
+  ;; Simulates input.
+  (def one-Q-board
+    [["." "." "." "." "." "." "." "."]
+     ["." "." "." "." "." "." "." "."]
+     ["." "." "." "." "." "Q" "." "."]
+     ["." "." "." "." "." "." "." "."]
+     ["." "." "." "." "." "." "." "."]
+     ["." "." "." "." "." "." "." "."]
+     ["." "." "." "." "." "." "." "."]
+     ["." "." "." "." "." "." "." "."]])
 
+  ;; Will be used as a base board to build on.
+  (def all-p-board
+    [["P" "P" "P" "P" "P" "P" "P" "P"]
+     ["P" "P" "P" "P" "P" "P" "P" "P"]
+     ["P" "P" "P" "P" "P" "P" "P" "P"]
+     ["P" "P" "P" "P" "P" "P" "P" "P"]
+     ["P" "P" "P" "P" "P" "P" "P" "P"]
+     ["P" "P" "P" "P" "P" "P" "P" "P"]
+     ["P" "P" "P" "P" "P" "P" "P" "P"]
+     ["P" "P" "P" "P" "P" "P" "P" "P"]])
 
-;; Simulates input.
-(def one-Q-board
-  [["." "." "." "." "." "." "." "."]
-   ["." "." "." "." "." "." "." "."]
-   ["." "." "." "." "." "Q" "." "."]
-   ["." "." "." "." "." "." "." "."]
-   ["." "." "." "." "." "." "." "."]
-   ["." "." "." "." "." "." "." "."]
-   ["." "." "." "." "." "." "." "."]
-   ["." "." "." "." "." "." "." "."]])
+  ;; Direction functions for taking a step in the next direction.
 
-;; Will be used as a base board to build on.
-(def all-p-board
-  [["P" "P" "P" "P" "P" "P" "P" "P"]
-   ["P" "P" "P" "P" "P" "P" "P" "P"]
-   ["P" "P" "P" "P" "P" "P" "P" "P"]
-   ["P" "P" "P" "P" "P" "P" "P" "P"]
-   ["P" "P" "P" "P" "P" "P" "P" "P"]
-   ["P" "P" "P" "P" "P" "P" "P" "P"]
-   ["P" "P" "P" "P" "P" "P" "P" "P"]
-   ["P" "P" "P" "P" "P" "P" "P" "P"]])
+  (def dirs {:topleft   (fn [[x y]] [(dec x) (dec y)])
+             :top       (fn [[x y]] [x (dec y)])
+             :topright  (fn [[x y]] [(inc x) (dec y)])
+             :left      (fn [[x y]] [(dec x) y])
+             :right     (fn [[x y]] [(inc x) y])
+             :downleft  (fn [[x y]] [(dec x) (inc y)])
+             :down      (fn [[x y]] [x (inc y)])
+             :downright (fn [[x y]] [(inc x) (inc y)])})
 
-;; Direction functions for taking a step in the next direction.
+  (defn outside-board?
+    "Stop the lazyness with this when you fall off the board."
+    [[x y]]
+    (or (< x 0)
+        (> x 7)
+        (< y 0)
+        (> y 7)))
 
-(def dirs {:topleft   (fn [[x y]] [(dec x) (dec y)])
-           :top       (fn [[x y]] [x (dec y)])
-           :topright  (fn [[x y]] [(inc x) (dec y)])
-           :left      (fn [[x y]] [(dec x) y])
-           :right     (fn [[x y]] [(inc x) y])
-           :downleft  (fn [[x y]] [(dec x) (inc y)])
-           :down      (fn [[x y]] [x (inc y)])
-           :downright (fn [[x y]] [(inc x) (inc y)])})
-
-(defn outside-board?
-  "Stop the lazyness with this when you fall off the board."
-  [[x y]]
-  (or (< x 0)
-      (> x 7)
-      (< y 0)
-      (> y 7)))
-
-(defn advance
-  "Take a step forward."
-  [dir pos]
-  ((dir dirs) pos))
+  (defn advance
+    "Take a step forward."
+    [dir pos]
+    ((dir dirs) pos))
 
 
-(defn advanced-positions
-  "Lazily take several steps forward."
-  [dir pos]
-  (lazy-seq
-   (cons pos
-         (advanced-positions dir (advance dir pos)))))
+  (defn advanced-positions
+    "Lazily take several steps forward."
+    [dir pos]
+    (lazy-seq
+     (cons pos
+           (advanced-positions dir (advance dir pos)))))
 
-(defn take-positions
-  "Find all the positions where a queen can take a piece."
-  [[x y]]
-  (for [dir (keys dirs)
-        pos (take-while
-             #(not (outside-board? %))
-             (advanced-positions dir [x y]))]
-    pos))
+  (defn take-positions
+    "Find all the positions where a queen can take a piece."
+    [[x y]]
+    (for [dir (keys dirs)
+          pos (take-while
+               #(not (outside-board? %))
+               (advanced-positions dir [x y]))]
+      pos))
 
-(defn find-string-on-board
-  [board string]
-  (for [row   (map-indexed vector board)
-        col   (map-indexed vector (second row))
-        :when (= string (second col))]
-    [(first row) (first col)]))
+  (defn find-string-on-board
+    [board string]
+    (for [row   (map-indexed vector board)
+          col   (map-indexed vector (second row))
+          :when (= string (second col))]
+      [(first row) (first col)]))
 
-(defn find-queen [board]
-  (find-string-on-board board "Q"))
-
-
-;; Functions for updating a board / 2d-seq
-
-(defn update-row [row x val]
-  (map-indexed (fn [xidx col]
-                 (if (= x xidx) val col)) row))
-
-(defn update-board [board [x y] val]
-  (map-indexed (fn [yidx row]
-                 (if (= y yidx)
-                   (update-row row x val)
-                   row)) board))
+  (defn find-queen [board]
+    (find-string-on-board board "Q"))
 
 
-;; (update-board one-Q-board [2 3] "X")
+  ;; Functions for updating a board / 2d-seq
+  (defn update-row [row x val]
+    (map-indexed (fn [xidx col]
+                   (if (= x xidx) val col)) row))
 
-(defn ok-positions
-  [board]
-  (let [qpos       (first (find-queen board))
-        tpositions (take-positions qpos)]
-    (reverse
-     (map reverse
-          (loop [tpositions tpositions
-                 board      all-p-board]
-            (if (empty? tpositions)
-              (update-board board qpos "Q")
-              (recur (rest tpositions)
-                     (update-board board
-                                   (first tpositions)
-                                   "."))))))))
+  (defn update-board [board [x y] val]
+    (map-indexed (fn [yidx row]
+                   (if (= y yidx)
+                     (update-row row x val)
+                     row)) board))
 
-(ok-positions one-Q-board)
+
+  ;; (update-board one-Q-board [2 3] "X")
+
+  (defn ok-positions
+    [board]
+    (let [qpos       (first (find-queen board))
+          tpositions (take-positions qpos)]
+      (reverse
+       (map reverse
+            (loop [tpositions tpositions
+                   board      all-p-board]
+              (if (empty? tpositions)
+                (update-board board qpos "Q")
+                (recur (rest tpositions)
+                       (update-board board
+                                     (first tpositions)
+                                     "."))))))))
+
+  (ok-positions one-Q-board)
 #+end_src
 
 Results in:
@@ -233,7 +148,7 @@ Results in:
  ("P" "P" "P" "P" "." "." "." "P")
  ("." "." "." "." "." "Q" "." ".")
  ("P" "P" "P" "P" "." "." "." "P")
- ("P" "P" "P" "." "P" "." "P"pp ".")
+ ("P" "P" "P" "." "P" "." "P" ".")
  ("P" "P" "." "P" "P" "." "P" "P")
  ("P" "." "P" "P" "P" "." "P" "P")
  ("." "P" "P" "P" "P" "." "P" "P"))
@@ -1020,7 +935,7 @@ largest wallet. Which is insane.
 
 Some games are really nothing but great combination of physics,
 animation and astonishing scenery. One example I would like to discuss
-is a game called flower [fn:19] (note, no capital f). In flower one
+is a game called flower (note, no capital f) [fn:19]. In flower one
 controls a single petal flying in the wind over an enormous field. As
 you fly across the field, if you hit other flowers, some of its petals
 will join you in your flight. In order to complete a level you need to
@@ -1420,6 +1335,85 @@ having a f2p business model.
 I've not got that much experience of developing games. My main
 development work has been of web programming nature (part front-end,
 part back-end), so this is a bit of a new field for me.
+* DONE About
+:PROPERTIES:
+:EXPORT_FILE_NAME: about
+:EXPORT_HUGO_SECTION: /
+:END:
+This started out as a blog for written answers to assignments from a
+course in Computer Game Design [fn:9] at the Royal Institute of
+Technology (KTH) in Sweden. Its purpose is to serve as a diary of
+sorts. It is a place where I jot down ideas, thoughts and reflections
+about my life and computers.
+
+It is solemnly written by me, Anton Erholt. I am 28 years old and live
+in Stockholm, Sweden. Currently I am on paternity leave with my son,
+but otherwise I work as a Data engineer at Tele2 IoT.
+
+Dear reader, hopefully it will be to your liking.
+* DONE Portfolio                                                  :portfolio:
+:PROPERTIES:
+:EXPORT_FILE_NAME: portfolio
+:EXPORT_HUGO_SECTION: /
+:END:
+
+
+These are some of the projects I have been involved in, one way or
+another. Most of the projects are related to school, but some have
+I worked on during my free time.
+# add github projects for golang - fractalz, game of life etc
+** School projects
+*** Aerial
+Aerial is a project where you control an airplane by moving a
+smartphone around. The goal of the project was to make something which
+somebody paralyzed from the neck and downwards could interact
+with. The smartphone is supposed to be attached to your head and you
+control the plane by tilting your head back and forth or side to side.
+
+I worked mostly on project management and fixing the issues we had, as
+well as some of the mathematical modeling needed.
+
+This project was part of the KTH course AGI-15.
+
+#+CAPTION: Gameplay of Aerial.
+[[/img/aerial.png]]
+
+*** Padawan101
+[[http://www.nada.kth.se/~aerholt/padawan101/][Padawan101]] is a light saber simulator made for Oculus DK2, a Microsoft
+Kinect and a smart phone. The project was built with Unity. We
+combined a lot of technologies to get body and light saber tracking
+working correctly. Worked on a lot of stuff during the project. What I
+worked the most on was actually networking, to create even more views
+so that people could join and look at the jedi fighting. I was also
+responsible for the project web page.
+
+The code is available [[https://github.com/stefanseibert/padawan101][here]]. This project was also part of the KTH
+course AGI-15.
+
+*** Put put glorify!
+[[https://github.com/mold/bm-putputglorify][Bm-putputglorify]] is a multiplayer game to be played on a big screen
+using smart phones as controllers. You spawn as a shell, the objective
+is to crash into other shells. Me and some of my friends built it
+as part of a 'pizza & javascript' - hackathon.
+
+#+CAPTION: Gameplay of bm-putputglorify
+[[https://raw.githubusercontent.com/mold/bm-putputglorify/master/put-put.png]]
+
+*** Rendering with ray casting and rasterization
+
+I built two renderers using ray tracing and rasterization as part of a
+introduction course to computer graphics.
+
+#+begin_export html
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/_Y4V6jAptpA" frameborder="0"
+allowfullscreen></iframe>
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/8R8CTFd2PSc" frameborder="0"
+allowfullscreen></iframe>
+#+end_export
+
 
 * Footnotes
 
