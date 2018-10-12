@@ -3,7 +3,7 @@ title = "How to set up SSH with key-based authentication"
 author = ["Anton Erholt"]
 description = "It's all about 42, (defn foobarbaz []) and cheeseburgers."
 date = 2018-10-12T22:48:00+02:00
-lastmod = 2018-10-12T23:31:42+02:00
+lastmod = 2018-10-12T23:37:51+02:00
 tags = ["ssh", "config"]
 categories = ["blog"]
 draft = false
@@ -92,7 +92,7 @@ you no longer will be able to ssh with a password.
 **X11Forwarding yes**
 
 Allows me to run graphical programs from the server on my
-workstation. Pretty darn cool feature. Used like **ssh <HOST> -X** or
+workstation. Pretty darn cool feature. Use **ssh <HOST> -X** or
 **ssh <HOST> -Y** from the workstation.
 
 **PrintMotd**
