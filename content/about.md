@@ -2,7 +2,7 @@
 title = "About"
 author = ["Anton Erholt"]
 description = "It's all about 42, (defn foobarbaz []) and cheeseburgers."
-lastmod = 2018-10-07T11:23:53+02:00
+lastmod = 2018-10-12T23:11:29+02:00
 draft = false
 weight = 1002
 +++
@@ -16,6 +16,7 @@ about my life and computers.
 It is solemnly written by me, Anton Erholt. I am 28 years old and live
 in Stockholm, Sweden. Currently I am on paternity leave with my son,
 but otherwise I work as a Data engineer at Tele2 IoT.
+You can find my resume [here](/cv_en.pdf).
 
 Dear reader, hopefully it will be to your liking.
 
