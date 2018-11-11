@@ -17,6 +17,113 @@
 :EXPORT_HUGO_SECTION: /
 :END:
 * DONE Blog                                                           :@blog:
+** DONE Set up Clojure with Emacs on Arch Linux              :clojure:emacs:
+CLOSED: [2018-11-11 Sun 06:35]
+:PROPERTIES:
+:EXPORT_FILE_NAME: set-up-clojure-and-emacs
+:END:
+
+Since I use Arch Linux I decided to use the distro package management
+to help out with the install. When starting out, I already had emacs
+installed (If I had not, a *pacman -S emacs* would have done the job).
+
+The last time I used Clojure, I used [[https://leiningen.org/][lein]] for doing project
+management. I guess I'll start from there this time too.
+
+I installed an AUR helper *yay* which allows me to install
+non-official Arch packages similar to how *pacman* does it. NOTE: You
+REALLY need to read through the PKGBUILD file for the packages you
+install, so that they do not do anything fishy (at least read the
+commments on AUR).
+
+Having *yay* installed, it was a breeze to get the packages *clojure*
+and *leiningen* installed. I chose the current openjdk (version
+11.0.1) as the backing JVM.
+
+I looked at [[https://www.braveclojure.com/basic-emacs/][braveclojure]] and [[https://ebzzry.io/en/emacs-pairs/#basics][ebzzry]] when setting up my Emacs
+configuration. The biggest thing I changed was the slurping/barfing
+where *C-&lt;left/right&gt;* acts forward and *M-&lt;left/right&gt;*
+acts backward.
+
+Starting out, I created this file, but later when I ran *M-x
+cider-jack-in*, I got some weird error so I removed it. I guess some
+stuff has happened since the last time I did this.
+
+- *~/.lein/profiles.clj* <- DON'T add this file
+#+BEGIN_SRC clojure
+{:user {:plugins [[cider/cider-nrepl "0.8.1"]]}}
+#+END_SRC
+
+- *~.emacs*
+#+BEGIN_SRC clojure
+(use-package clojure-mode
+  :ensure t)
+
+(use-package cider
+  :ensure t)
+
+(use-package smartparens
+  :ensure t
+  :bind (
+         ("C-M-a" . sp-beginning-of-sexp)
+         ("C-M-e" . sp-end-of-sexp)
+
+         ("C-<down>" . sp-down-sexp)
+         ("C-<up>"   . sp-up-sexp)
+         ("M-<down>" . sp-backward-down-sexp)
+         ("M-<up>"   . sp-backward-up-sexp)
+
+         ("C-M-f" . sp-forward-sexp)
+         ("C-M-b" . sp-backward-sexp)
+
+         ("C-M-n" . sp-next-sexp)
+         ("C-M-p" . sp-previous-sexp)
+
+         ("C-S-f" . sp-forward-symbol)
+         ("C-S-b" . sp-backward-symbol)
+
+         ("C-<right>" . sp-forward-slurp-sexp)
+         ("C-<left>" . sp-forward-barf-sexp)
+         ("M-<left>"  . sp-backward-slurp-sexp)
+         ("M-<right>"  . sp-backward-barf-sexp)
+
+         ("C-M-t" . sp-transpose-sexp)
+         ("C-M-k" . sp-kill-sexp)
+         ("C-k"   . sp-kill-hybrid-sexp)
+         ("M-k"   . sp-backward-kill-sexp)
+         ("C-M-w" . sp-copy-sexp)
+         ("C-M-d" . delete-sexp)
+
+         ("M-<backspace>" . backward-kill-word)
+         ("C-<backspace>" . sp-backward-kill-word)
+         ([remap sp-backward-kill-word] . backward-kill-word)
+
+         ("M-[" . sp-backward-unwrap-sexp)
+         ("M-]" . sp-unwrap-sexp)
+
+         ("C-x C-t" . sp-transpose-hybrid-sexp)
+
+         ("C-c ("  . wrap-with-parens)
+         ("C-c ["  . wrap-with-brackets)
+         ("C-c {"  . wrap-with-braces)
+         ("C-c '"  . wrap-with-single-quotes)
+         ("C-c \"" . wrap-with-double-quotes)
+         ("C-c _"  . wrap-with-underscores)
+         ("C-c `"  . wrap-with-back-quotes))
+  :diminish smartparens-mode
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode 1))
+
+(use-package rainbow-delimiters
+  :ensure t)
+#+END_SRC
+
+That is about it for getting Clojure and running with Emacs on Arch
+Linux. Now you can do *lein new <project-name>* to generate a new
+project. To get a REPL running, simply open the *project.clj* and *M-x
+cider-jack-in*.
+
 ** DONE How to set up SSH with key-based authentication         :ssh:config:
 CLOSED: [2018-10-12 Fri 22:48]
 :PROPERTIES:
@@ -36,7 +143,7 @@ CLOSED: [2018-10-12 Fri 22:48]
   use Arch Linux it's already there by default. A quick search yields
   [[https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=2ahUKEwj3ive2zYHeAhVBtosKHWsVBCEQFjABegQIBhAE&url=https%3A%2F%2Fwww.simplified.guide%2Fubuntu%2Finstall-ssh-server&usg=AOvVaw24xjG875GC72ufNqHsQV5z][this]] site with instructions for Ubuntu.
 
-  
+
 *** On the workstation
 
   Generate a long enough keypair. Keypair - a pair of keys. A public
@@ -48,13 +155,13 @@ CLOSED: [2018-10-12 Fri 22:48]
   decryption). By default, *ssh-keygen* asks to save the keys as
   *~/.ssh/id_rsa* for the private key, and *~/.ssh/id_rsa.pub* for the
   public key.
-  
+
 #+BEGIN_SRC bash
 ssh-keygen -t rsa -b 4096
 #+END_SRC
 
   Create a new file in  *~/.ssh/config* with the following content:
-  
+
 #+BEGIN_SRC bash
 Host <HOST-NICKNAME>
      Hostname <IP-OR-HOSTNAME>
@@ -65,7 +172,7 @@ Host <HOST-NICKNAME>
 
   To transfer your public key on to the server,
   use *$ ssh-copy-id <HOST-NICKNAME>*.
-  
+
 *** On the server
 
   Edit the file */etc/ssh/sshd_config* so it contains these two lines.
@@ -97,19 +204,19 @@ PrintMotd no
   have no idea why I set this in the first place.
 
   *PasswordAuthentication no*
-  
+
   Make sure you have already copied your public key from a
   workstation here if you decide to use my additional settings, since
   you no longer will be able to ssh with a password.
 
   *X11Forwarding yes*
-  
+
   Allows me to run graphical programs from the server on my
   workstation. Pretty darn cool feature. Use *ssh <HOST> -X* or
   *ssh <HOST> -Y* from the workstation.
 
   *PrintMotd*
-  
+
   Motd - message of the day. I feel like I can live without it, but it
   can be really useful. Like listing if any upgrades are available or
   if any errors on some services need my immediate attention.
